@@ -1,0 +1,44 @@
+<div *ngIf="filters && form" class="filter">
+  <div class="filter__button">
+    <button mat-raised-button (click)="resetFilters()">
+      <p>Limpiar Filtros</p>
+    </button>
+    <button [disabled]="error" mat-raised-button (click)="search()">
+      <p>Buscar</p>
+    </button>
+  </div>
+  <form novalidate>
+    <ng-container [ngTemplateOutlet]="filtersTemplate"
+                  [ngTemplateOutletContext]="{ filters:filters }">
+    </ng-container>
+  </form>
+</div>
+<ng-template #filtersTemplate let-filters="filters">
+  <ng-container *ngFor="let filter of filters">
+    <ng-container [ngSwitch]="filter.type">
+      <app-select-filter *ngSwitchCase="'select' || 'multiple'"
+                         (changeEvent)="onChangedFilter()"
+                         [form]="form" [filter]="filter">
+      </app-select-filter>
+      <app-date-time-range *ngSwitchCase="'datetimerange'"
+                            [form]="form"
+                           [filter]="filter">
+      </app-date-time-range>
+      <app-radio-button *ngSwitchCase="'radioButton'"
+                        (changeEvent)="onChangedFilter()"
+                        [form]="form" [filter]="filter">
+      </app-radio-button>
+      <app-checkbox *ngSwitchCase="'matCheckbox'"
+                    (changeEvent)="onChangedFilter()" [form]="form"
+                    [filter]="filter">
+      </app-checkbox>
+      <app-range-number *ngSwitchCase="'rangeNumber'"
+                        (errorEvent)="checkError($event)" [form]="form"
+                        [filter]="filter">
+      </app-range-number>
+      <app-input-text *ngSwitchCase="'inputText'" [form]="form"
+                      [filter]="filter">
+      </app-input-text>
+    </ng-container>
+  </ng-container>
+</ng-template>

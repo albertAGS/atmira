@@ -1,0 +1,207 @@
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-12">
+      <h1>
+        <img width="100" src="https://www.pngkey.com/png/detail/955-9559319_happy-car.png" alt="">
+
+        <span> CompraCoches.es</span>
+      </h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-9">
+      <div class="marketplace-container" style="padding: 0;">
+        <form class="as-payment row" autocomplete="off" method="POST" [formGroup]="ASPaymentForm">
+          <div class="col-4 article">
+            <h2 class="pay-title">Datos de compra</h2>
+            <span class="pay-subtitle"></span>
+            <div class="information-container">
+              <input type="text" class="description" formControlName="DNI" placeholder="DNI Ordenante"><br>
+              <input type="text" class="description" formControlName="nombreOrdenante"
+                placeholder="Nombre del Ordenante"><br>
+              <input type="text" formControlName="ref" placeholder="Ref." class="description"><br>
+            </div>
+            <h2 class="pay-title mt-3">Datos adicionales</h2>
+            <span class="pay-subtitle"></span>
+            <div class="information-container">
+              <input type="text" formControlName="callBackOK" placeholder="Callback OK" class="description"><br>
+              <input type="text" formControlName="callBackKO" placeholder="Callback KO" class="description"><br>
+            </div>
+          </div>
+          <div class="article col-4">
+            <h2 class="pay-title">Pago AS</h2>
+            <span class="pay-subtitle">Pago con custodia asistido</span>
+            <img style="margin-top: 5px;" src="./assets/pruebas/furgon.png" alt=""><br>
+            <div class="information-container">
+              <input type="text" formControlName="price"> <br>
+              <button type="submit" class="submit-btn" (click)="thwrowPayment(1, 1, 'terms')">Comprar</button>
+              <button type="submit" class="submit-btn" (click)="thwrowPayment(1, 1, 'qr')">Pagar con QR</button>
+            </div>
+          </div>
+          <div class="article col-4">
+            <h2 class="pay-title">Pago XS</h2>
+            <span class="pay-subtitle" >Pago sin custodia asistido a cuenta fija</span>
+            <img style="margin-top: 5px;" src="./assets/pruebas/todoterreno.png" alt=""><br>
+            <div class="information-container">
+              <input type="text" formControlName="price2"><br>
+              <button type="submit" class="submit-btn" (click)="thwrowPayment(1, 2, 'terms')">Comprar</button>
+              <button type="submit" class="submit-btn" (click)="thwrowPayment(1, 2, 'qr')">Pagar con QR</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="widget-container" style="padding: 0;">
+      <iframe [src]="akanaUrl" frameborder="0"></iframe>
+    </div>
+  </div>
+</div>
+<div class="marketplace-container">
+
+  <div class="type-payments">
+
+    <div class="payment">
+      <h2 class="pay-title">Prueba de pago P</h2>
+      <span class="pay-subtitle">Pago No Asistido entre Cuentas</span>
+      <form autocomplete="off" method="POST" [formGroup]="PPaymentForm">
+        <input type="text" formControlName="origin" placeholder="Cta Origen">
+        <input type="text" formControlName="destiny" placeholder="Cta Destino">
+        <input type="text" formControlName="amount" placeholder="Importe" class="amount">EUR
+        <input type="text" formControlName="beneficiary" placeholder="Beneficiario" class="last">
+        <input type="text" class="description" formControlName="DNI" placeholder="DNI Ordenante">
+        <input type="text" class="description" formControlName="nombreOrdenante" placeholder="Nombre del Ordenante">
+        <input type="text" formControlName="ref" placeholder="Ref."><br>
+        <input type="text" formControlName="callBackOK" placeholder="Callback OK" class="description"><br>
+        <input type="text" formControlName="callBackKO" placeholder="Callback KO" class="description"><br>
+        <button type="submit" style="margin-left: 5px;" (click)="thwrowPayment(2, null, 'qr')">Pagar con QR</button>
+        <button type="submit" (click)="thwrowPayment(2, null, 'terms')">Enviar</button>
+
+      </form>
+    </div>
+    <div class="payment">
+      <h2 class="pay-title">Prueba de pago RX</h2>
+      <span class="pay-subtitle">Pago Recurrente</span>
+      <form autocomplete="off" method="POST" [formGroup]="RXPaymentForm">
+        <input type="text" formControlName="CC_Origen" placeholder="Cta Origen">
+        <input type="text" formControlName="CC_Destino" placeholder="Cta Destino">
+        <input type="text" formControlName="Importe" placeholder="Importe" class="amount">EUR
+        <input type="text" formControlName="Beneficiario" placeholder="Beneficiario" class="last">
+        <input type="text" class="description" formControlName="DNI" placeholder="DNI Ordenante">
+        <input type="text" class="description" formControlName="NombreOrdenante" placeholder="Nombre del Ordenante">
+        
+        <input matInput class="description" formControlName="FechaInicio" placeholder="Fecha inicio" [min]="initMinDate"
+          [matDatepicker]="inicio" (click)="inicio.open()" (keydown)="false">
+        <mat-datepicker #inicio></mat-datepicker>
+        <input matInput class="description" formControlName="FechaFin" placeholder="Fecha fin" [min]="endMinDate"
+          [matDatepicker]="fin" (click)="fin.open()" (keydown)="false">
+        <mat-datepicker #fin></mat-datepicker>
+        <select class="description" formControlName="Frecuencia" placeholder="Frecuencia" name="" id="">
+          <option *ngFor="let frecuency of frecuencies" value="{{frecuency.value}}">{{frecuency.text}}</option>
+        </select>
+        <select *ngIf="executionDays.length" class="description" formControlName="FechaEjecucion"
+          placeholder="FechaEjecucion" name="" id="">
+          <option *ngFor="let execution of executionDays" value="{{execution.value}}">{{execution.text}}</option>
+        </select>
+        <input type="text" formControlName="Reference" placeholder="Ref.">
+        <input type="text" formControlName="Callback_OK" placeholder="Callback OK" class="description"><br>
+        <input type="text" formControlName="Callback_KO" placeholder="Callback KO" class="description"><br>
+        <button type="submit" style="margin-left: 5px;" (click)="thwrowPayment(4, null, 'qr')">Pagar con QR</button>
+        <button type="submit" (click)="thwrowPayment(4, null, 'terms')">Enviar</button>
+
+      </form>
+    </div>
+    <div class="payment">
+      <h2 class="pay-title">Prueba de pago A <span class="red-alert">no activo</span> </h2>
+      <span class="pay-subtitle">Pago con Custodia No Asistido</span>
+      <form autocomplete="off" method="POST" [formGroup]="APaymentForm">
+        <input type="text" formControlName="origin" placeholder="Cta Origen">
+        <input type="text" formControlName="amount" placeholder="Importe" class="amount">EUR
+        <input type="text" class="description" formControlName="DNI" placeholder="DNI Ordenante">
+        <input type="text" class="description" formControlName="nombreOrdenante" placeholder="Nombre del Ordenante">
+        <input type="text" formControlName="ref" placeholder="Ref."><br>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+    <div class="payment">
+      <h2 class="pay-title">Prueba de pago S </h2>
+      <span class="pay-subtitle">Pago Sin Custodia Asistido a Cuenta Destino</span>
+      <form autocomplete="off" method="POST" [formGroup]="SPaymentForm">
+        <input type="text" formControlName="CC_Destino" placeholder="Cta Destino">
+        <input type="text" formControlName="Importe" placeholder="Importe" class="amount">EUR
+        <input type="text" formControlName="Beneficiario" placeholder="Beneficiario" class="last">
+        <input type="text" class="description" formControlName="DNI" placeholder="DNI Ordenante">
+        <input type="text" class="description" formControlName="NombreOrdenante" placeholder="Nombre del Ordenante">
+        <input type="text" formControlName="Reference" placeholder="Ref."><br>
+        <input type="text" formControlName="Callback_OK" placeholder="Callback OK"><br>
+        <input type="text" formControlName="Callback_KO" placeholder="Callback KO"><br>
+        <button type="submit" (click)="PaySService('terms')">Enviar</button>
+      </form>
+    </div>
+
+  </div>
+  <div class="type-payments">
+    <div class="payment small">
+      <h2 class="pay-title">Traspaso de virtual</h2>
+      <span class="pay-subtitle"></span>
+      <form autocomplete="off" style="text-align: left;" method="POST" [formGroup]="TVPaymentForm">
+        <input type="text" formControlName="destiny" placeholder="Cta Destino">
+        <input type="text" formControlName="amount" placeholder="Importe" class="amount">EUR
+        <input type="text" formControlName="beneficiary" placeholder="Beneficiario" class="last">
+        <input type="text" formControlName="ref" placeholder="Ref.">
+        <button type="button" (click)="thwrowPayment(3)">Enviar</button>
+      </form>
+    </div>
+    <div class="payment small">
+      <h2 class="pay-title">Descarga de Saldos</h2>
+      <span class="pay-subtitle"></span>
+      <form autocomplete="off" style="text-align: left;" method="POST" [formGroup]="BServiceForm">
+        <input type="text" formControlName="Reference" placeholder="Ref.">
+        <button type="button" (click)="callService('B_Pay')">Enviar</button>
+      </form>
+    </div>
+    <div class="payment small">
+      <h2 class="pay-title">Retroceder Operación</h2>
+      <span class="pay-subtitle"></span>
+      <form autocomplete="off" style="text-align: left;" method="POST" [formGroup]="ZServiceForm">
+        <input type="text" formControlName="Reference" placeholder="Ref.">
+        <button type="button" (click)="callService('Z_Pay')">Enviar</button>
+      </form>
+    </div>
+    <div class="payment small">
+      <h2 class="pay-title">Validación de cuentas</h2>
+      <span class="pay-subtitle"></span>
+      <form autocomplete="off" style="text-align: left;" method="POST" [formGroup]="VServiceForm">
+        <input type="text" formControlName="CC_Destino" placeholder="Cta Destino">
+        <input type="text" formControlName="Solicitante" placeholder="Solicitante">
+        <input type="text" formControlName="DNI" placeholder="DNI">
+        <input type="text" formControlName="Reference" placeholder="Ref.">
+        <button type="button" (click)="callService('V_Pay')">Enviar</button>
+      </form>
+    </div>
+    <div class="payment small">
+      <h2 class="pay-title">Transferencia Directa</h2>
+      <span class="pay-subtitle"></span>
+      <form autocomplete="off" style="text-align: left;" method="POST" [formGroup]="DServiceForm">
+        <input type="text" formControlName="Importe" placeholder="Importe" class="amount">EUR
+        <input type="text" formControlName="NombreOrdenante" placeholder="Nombre ordenante">
+        <input type="text" formControlName="DNI" placeholder="DNI">
+        <input type="text" formControlName="Reference" placeholder="Ref.">
+        <input type="text" formControlName="Callback_OK" placeholder="Callback OK">
+        <input type="text" formControlName="Callback_KO" placeholder="Callback KO">
+        <button type="button" (click)="callService('D_Service')">Enviar</button>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="modal-marketplace" *ngIf="payParam">
+  <div class="modal-header">
+    Aviso
+  </div>
+  <div class="modal-body">
+    {{modalMessage}}
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" (click)="payParam = false">Aceptar</button>
+  </div>
+</div>

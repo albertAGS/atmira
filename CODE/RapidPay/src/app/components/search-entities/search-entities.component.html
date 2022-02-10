@@ -1,0 +1,13 @@
+<div class="search-container">
+    <form [formGroup]="search">
+        <div class="input-search-entity">
+            <input formControlName="result" autocomplete="off" type="text" id="searcher" class="input-search" placeholder="Buscar Banco">
+            <img src="./assets/logos/lupa.png" alt="">
+        </div>
+        <div [ngClass]="{'results': search.get('result').value && results.length > 0 }">
+            <div class="result" *ngFor="let entity of results" (click)="selectEntity(entity);">
+                <a>{{entity.Name}}</a>
+            </div>
+        </div>
+    </form>
+</div>

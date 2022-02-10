@@ -1,0 +1,10 @@
+<div *ngIf="message" class="alert" [ngClass]="message.type" [@slideToLeft]>
+  <div (click)="clearAlert()" class="alert-messages">
+    <span class="alert-heading"> {{message.title}}</span>
+    <p class="alert-description">
+      {{message.text}}
+    </p>
+  </div>
+</div>
+
+

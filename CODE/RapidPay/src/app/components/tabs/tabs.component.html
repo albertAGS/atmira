@@ -1,0 +1,31 @@
+<div class="tabs">
+  <ng-container
+                *ngFor="let item of optionsTabs | tabs:{'start':0,'end':3,'isOpened':smallWindow}">
+    <a [ngClass]="item.icon" matRipple
+       [routerLink]="['/console/'+ item.url]" class="tabs__inner"
+       routerLinkActive="tabs__active" (click)="changeTab()" [routerLinkActiveOptions]="{exact: true}">
+      <i class="tabs__icon" *ngIf="item.icon">
+      </i>
+      {{item.name}}
+    </a>
+  </ng-container>
+  <button *ngIf="smallWindow" mat-button
+          [matMenuTriggerFor]="menu">...</button>
+  <mat-menu #menu="matMenu">
+    <ng-container
+                  *ngFor="let item of optionsTabs | tabs:{'start':3,'end':optionsTabs.length,'isOpened':smallWindow};">
+      <a [ngClass]="item.icon" matRipple
+         [routerLink]="['/console/'+ item.url]"
+         class="tabs__inner tabs__menu"
+         routerLinkActive="tabs__active" (click)="changeTab()"
+         [routerLinkActiveOptions]="{exact: true}">
+        <i class="tabs__icon" *ngIf="item.icon">
+        </i>
+        {{item.name}}
+      </a>
+    </ng-container>
+  </mat-menu>
+  <ng-content select=".layout__select"></ng-content>
+</div>
+<div class="tab-selected">
+</div>

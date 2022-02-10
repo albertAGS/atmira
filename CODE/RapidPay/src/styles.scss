@@ -1,0 +1,207 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$RapidPay-primary: mat-palette($mat-indigo);
+$RapidPay-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$RapidPay-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$RapidPay-theme: mat-light-theme((
+  color: (
+    primary: $RapidPay-primary,
+    accent: $RapidPay-accent,
+    warn: $RapidPay-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($RapidPay-theme);
+
+@font-face {
+  font-family: "Santander";
+  src: url("./assets/styles/fonts/SantanderText-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Santander-light";
+  src: url("./assets/styles/fonts/SantanderText-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "icomoon";
+  src: url("./assets/styles/fonts/icomoon.eot?98x6ym");
+  src: url("./assets/styles/fonts/icomoon.eot?98x6ym#iefix") format("embedded-opentype"),
+    url("./assets/styles/fonts/icomoon.ttf?98x6ym") format("truetype"),
+    url("./assets/styles/fonts/icomoon.woff?98x6ym") format("woff"),
+    url("./assets/styles/fonts/icomoon.svg?98x6ym#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "icomoon" !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-logo-balance:before {
+  content: "\e900";
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  border: 0;
+  font-size: 100%;
+  font-family: Santander;
+  vertical-align: baseline;
+}
+
+app-root {
+  height: 100%;
+  margin: 0;
+  // background-color: #f3f3f3;;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: "Santander";
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.red-button {
+  width: 270px;
+  height: 50px;
+  border-radius: 27px;
+  background-color: #EC0000;
+  color: #FFFFFF;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  font-size: 18px;
+  &:disabled {
+    background-color: #d5d5d5;
+    cursor: not-allowed;
+  }
+}
+.body .faqs .mat-accordion .mat-expansion-panel {
+  border-radius: 0;
+  border-bottom: 1px solid #d6dee7;
+  box-shadow: none;
+
+  .mat-expansion-panel-header {
+    padding: 0 5px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .mat-expansion-panel-body {
+    padding: 10px 5px;
+  }
+}

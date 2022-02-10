@@ -1,0 +1,24 @@
+<main class="main">
+  <div class="main__text">
+    <img src="./assets/logos/logo_rapid_pay_2.png" alt="">
+    <p>Bienvenidos al portal de gestión de pagos.</p>
+  </div>
+  <div class="main__form">
+    <form [formGroup]="portalForm" autocomplete="off" method="post">
+
+      <mat-form-field>
+        <mat-label>Usuario</mat-label>
+        <input matInput formControlName="user" placeholder="Usuario">
+      </mat-form-field>
+      <p style="color:red;" *ngIf="message">{{message}}</p>
+      <mat-form-field>
+        <mat-label>Contraseña</mat-label>
+        <input matInput [type]="password" matInput autocomplete="off"
+               formControlName="pass" placeholder="Contraseña">
+        <mat-icon (click)="changeIcon()" matSuffix>{{visibility}}</mat-icon>
+      </mat-form-field>
+      <a (click)="sendForm()" type="submit">Entrar</a>
+    </form>
+  </div>
+</main>
+<footer class="footer">Portal de Administración</footer>

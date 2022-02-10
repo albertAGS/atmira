@@ -1,0 +1,42 @@
+<div class="response-container" *ngIf="callBackURL">
+  <header>
+    <img src="./assets/logos/logo_rapid_pay_2.png" alt="">
+  </header>
+  <div class="response-container">
+    <div *ngIf="view && payData" class="response-ok">
+      <img src="./assets/success/success.png" alt="">
+      <p class="title">
+        Pago realizado correctamente
+      </p>
+      <p>
+        Cuenta destino de la transferencia: {{getIban(payData.creditorAccount.iban)}}
+      </p>
+      <p>
+        Beneficiario: {{payData.creditorName}}
+      </p>
+      <p>
+        Importe: {{payData.instructedAmount.amount}}&nbsp;{{currencyMap[payData.instructedAmount.currency]}}
+      </p>
+      <p>
+        Concepto: {{payData.remittanceInformationUnstructured}}
+      </p>
+      <p>
+        Fecha de la operación: {{date}}
+      </p>
+      <!-- <p class="information">
+        Gracias por elegir RapidPay para sus pagos
+      </p> -->
+      <button type="submit" (click)="close()">Finalizar</button>
+    </div>
+    <div *ngIf="!view" class="response-error">
+      <img src="./assets/success/ko.svg" alt="">
+      <p class="title">
+        No se ha podido tramitar el pago
+      </p>
+      <p class="information">
+        Si necesitas más información, por favor contacta <br> con tu banco.
+      </p>
+      <button type="submit" (click)="close()">Finalizar</button>
+    </div>
+  </div>
+</div>

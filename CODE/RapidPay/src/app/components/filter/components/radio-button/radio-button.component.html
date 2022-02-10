@@ -1,0 +1,14 @@
+<div *ngIf="filter.label">{{ filter.label }}</div>
+
+<ul [formGroup]="form">
+  <!-- <mat-radio-group (change)=onChange() -->
+  <mat-radio-group [ngClass]="{'column':  !filter.columns}"
+                   [formControlName]='filter.name'>
+    <li *ngFor="let option of filter.properties">
+      <mat-radio-button [value]="option.value" color="primary">
+        {{option.description }}
+      </mat-radio-button>
+      <mat-icon  *ngIf="option.tooltip" matTooltipPosition="left" [matTooltip]="option.tooltip">info</mat-icon>
+    </li>
+  </mat-radio-group>
+</ul>

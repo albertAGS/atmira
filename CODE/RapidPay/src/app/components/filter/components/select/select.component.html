@@ -1,0 +1,14 @@
+<div *ngIf="filter.label  && form.get(filter.name).value">{{
+  filter.label }}</div>
+<mat-form-field [formGroup]="form">
+  <div *ngIf="filter.label  && !form.get(filter.name).value">{{
+    filter.label }}</div>
+  <!-- <mat-select  (selectionChange)="onChange()" -->
+  <mat-select [formControlName]="filter.name"
+              [multiple]="filter.multiple">
+    <mat-option *ngFor="let option of filter.properties"
+                [value]="option.value">
+      {{option.description | uppercase}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

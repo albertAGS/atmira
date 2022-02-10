@@ -1,0 +1,20 @@
+
+
+<div @fade class="app-login"
+    [ngStyle]="{'grid-template-rows': !headerFooter ? 'auto' : '150px auto' }">
+    <app-header *ngIf="headerFooter" class="header-mobile"></app-header>
+    <header *ngIf="headerFooter" class="header">
+        <div class="container-logo">
+            <div class="logo">
+                <img src="./assets/logos/logo_rapid_pay_2.png" alt="">
+            </div>
+        </div>
+    </header>
+    <div class="body">
+        <div class="change-container">
+            <qrcode [qrdata]="termsRoute" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+            <p>Utiliza este QR para realizar el pago en tu dispositivo</p>
+        </div>
+    </div>
+    <app-footer *ngIf="headerFooter" class="footer" [colorItems]="'#ffffff'" [classSpecial]="true"></app-footer>
+</div>

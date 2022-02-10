@@ -1,0 +1,25 @@
+<!-- <mat-form-field [formGroup]="form" appearance="fill" -->
+<mat-form-field [ngClass]="error" [formGroup]="form.get(filter.name)"
+                appearance="fill" floatLabel="always">
+  <mat-label *ngIf="filter.label">{{ filter.label }}
+    mínimo </mat-label>
+
+  <input [formControlName]="properties.start.name" matInput
+         type="number" class="example-right-align" placeholder='0.00'
+         (ngModelChange)=change()>
+  <mat-hint *ngIf="error">El valor mínimo demasiado grande</mat-hint>
+  <span matPrefix>€&nbsp;</span>
+</mat-form-field>
+
+<!-- <mat-form-field [formGroup]="form" appearance="fill" -->
+<mat-form-field [ngClass]="error" [formGroup]="form.get(filter.name)"
+                appearance="fill" floatLabel="always">
+  <mat-label [ngClass]="error" *ngIf="filter.label">{{ filter.label }}
+    máximo </mat-label>
+  <input [formControlName]="properties.end.name" matInput
+         type="number" class="example-right-align" placeholder='0.00'
+         (ngModelChange)=change()>
+  <span matPrefix>€&nbsp;</span>
+  <mat-hint *ngIf="error">El valor máximo demasiado pequeño</mat-hint>
+
+</mat-form-field>

@@ -1,0 +1,33 @@
+<div class="app-faqs" *ngIf="responseOk"
+  [ngStyle]="{'grid-template-rows': !headerFooter ? 'auto' : '150px auto' }">
+  <app-header *ngIf="headerFooter" class="header-mobile"></app-header>
+  <header *ngIf="headerFooter" class="header">
+    <div class="container-logo">
+      <div class="logo">
+        <img src="./assets/logos/logo_rapid_pay_2.png" alt="">
+      </div>
+    </div>
+  </header>
+  <div class="body" *ngIf="dataAccess">
+    <a class="back-link" href="javascript:void(0)" (click)="goBack()">
+      <span class="arrow"><</span>
+      <span class="text">volver</span>
+    </a>
+    <p class="tittle-faqs">Preguntas frecuentes</p>
+    <div class="faqs">
+        <mat-accordion >
+            <mat-expansion-panel  *ngFor="let item of dataAccess | keyvalue; let i = index">
+                <mat-expansion-panel-header >
+                    <mat-panel-title>
+                        <strong>{{ 'FAQS.QUESTIONS.' + (i + 1) | translate}}</strong>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div [innerHTML]="'FAQS.ANSWERS.' + (i + 1) | translate"></div>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+</div>
+  <app-footer *ngIf="headerFooter" class="footer" [colorItems]="'#ffffff'" [classSpecial]="true"></app-footer>
+</div>
+
+<app-loading-process *ngIf="showLoading"></app-loading-process>

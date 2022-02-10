@@ -1,0 +1,68 @@
+<div @fade class="app-login" *ngIf="responseOk" [ngStyle]="{'grid-template-rows': !headerFooter ? 'auto' : '150px auto' }">
+  <app-header *ngIf="headerFooter" class="header-mobile"></app-header>
+  <header *ngIf="headerFooter" class="header">
+    <div class="container-logo">
+      <div class="logo">
+        <img src="./assets/logos/logo_rapid_pay_2.png" alt="">
+      </div>
+    </div>
+    <div class="faq-container" *ngIf="!onBoarding">
+      <a routerLink="/faq" title="Preguntas frecuentes">
+        <span>
+          Preguntas frecuentes
+        </span>
+        <img src="./assets/icons/faq.svg" alt=""></a>
+    </div>
+  </header>
+  <div class="body" [ngClass]="{'on-boarding': onBoarding}">
+    <div class="on-boarding-container" *ngIf="onBoarding">
+      <app-onboarding (continue)="closeOnBoarding()"></app-onboarding>
+    </div>
+    <div class="change-container" *ngIf="!onBoarding">
+      <div class="container-tittle">
+        <p class="select-tittle"> {{ 'TERMS.TITLE' | translate }}</p>
+      </div>
+      <form [formGroup]="termsForm">
+        <div class="container-checkbox">
+          <mat-checkbox (change)="onChangeCheckbox($event, 'precontractual_rapidpay')" color="warn" formControlName="precontractual_rapidpay">
+          </mat-checkbox>
+          <p>
+            Confirmo que he leído y acepto la <a (click)="downloadFile('precontractual_rapidpay')" href="javascript:void(0)">información precontractual</a>
+          </p>
+        </div>
+        <div class="container-checkbox">
+          <mat-checkbox (change)="onChangeCheckbox($event, 'terminos_y_condiciones_rapidpay', true)" color="warn" formControlName="terminos_y_condiciones_rapidpay">
+          </mat-checkbox>
+          <p>
+            Confirmo que he leído y acepto los <a (click)="downloadFile('terminos_y_condiciones_rapidpay')" href="javascript:void(0)">T&Cs de RapidPay</a>
+          </p>
+
+        </div>
+        <div class="button-container">
+          <button class="red-button" (click)="submit()" [disabled]="!termsForm.valid" type="button">Confirmar</button>
+        </div>
+
+        <div class="icons-container">
+          <div>
+            <a target="_blank" href="https://www.entrust.net/customer/profile?domain=santanderconsumer.es&lang=en">
+              <img style="width: 70px;" src="./assets/security/2.svg" alt="">
+            </a>
+          </div>
+          <div>
+            <a target="_blank" href="https://www.entrust.com/resources/certificate-solutions/learn/faq">
+              <img src="./assets/security/3.svg" alt="">
+            </a>
+            <a target="_blank" href="https://www.bde.es/bde/es/areas/supervision/funcion/Entidades/Entidades_supervisadas.html">
+              <img src="./assets/security/bde.png" alt="">
+            </a>
+          </div>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+  <!-- <app-footer *ngIf="headerFooter" class="footer" [colorItems]="'#ffffff'" [classSpecial]="true"></app-footer> -->
+</div>
+
+<app-loading-process *ngIf="showLoading"></app-loading-process>

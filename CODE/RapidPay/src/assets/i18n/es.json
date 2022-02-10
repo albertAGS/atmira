@@ -1,0 +1,126 @@
+{
+    "CAROUSEL": {
+        "SKIP": "Saltar",
+        "TRANSLATIONS": {
+            "HEALTH": "SALUD FINANCIERA",
+            "0": {
+                "TITTLE": "¿Qué es?",
+                "DESCRIPTION": "Consiste en mantener un equilibrio entre lo que ingresas y lo que gastas."
+            },
+            "1": {
+                "TITTLE": "¿Cómo Se mide?",
+                "DESCRIPTION": "Categorizamos la salud financiera en 8 niveles basados en más de 150 métricas."
+            },
+            "2": {
+                "TITTLE": "Seguro",
+                "DESCRIPTION": "Nos registramos por la <strong>normativa europea PSD2</strong> y no almacenamos las claves que nos facilites."
+            },
+            "3": {
+                "TITTLE": "Tu informe a medida",
+                "DESCRIPTION": "Te ofrecemos consejos que te ayudaran a ahorrar y a mejorar tu salud financiera"
+            }
+        }
+    },
+    "TERMS": {
+        "TITLE": "Terminos y condiciones"
+    },
+    "LOGIN": {
+        "SELECT_ENTITY": "Selecciona tu banco",
+        "SELECT_ENTITY_SUBTITLE": "Tras elegir tu banco, <strong>accederás a tu cuenta bancaria</strong> para poder realizar el pago.<br>Rapid Pay no almacena claves. Nos regimos por la normativa europea PSD2.",
+        "SELECT_ENTITY_EXP": "Nos regimos por la normativa europea PSD2",
+        "SELECT_METHOD": "Selecciona metodo de acceso",
+        "NOT_FOUND_ENTITY": "¿No es ninguno de estos? Utiliza el buscador",
+        "IDENTIFICATION": "Identificación ",
+        "ADD_KEYS": "Introduce las credenciales que usas para acceder a la banca online de ",
+        "BUTTONS": {
+            "READY": "Listo",
+            "NEXT": "Siguiente"
+        },
+        "ING": {
+            "DNI": "DNI o Tarjeta de residencia",
+            "DAY": "DD",
+            "MONTH": "MM",
+            "YEAR": "AAAA",
+            "KEY": "Clave"
+        },
+        "ERRORS": {
+            "WRONG_DATE": "Fecha no valida, por revisela",
+            "INMORTAL": "El año es muy inferior al actual, por favor reviselo",
+            "MAX": "Año de nacimiento incorrecto, por favor reviselo",
+            "WRONG_DNI": "Por favor, introduce un usuario/documento válido",
+            "CREDENTIALS": "* Credenciales incorrectas. Los datos introducidos no existen o son incorrectos. Recuerda respetar mayúsculas y minúsculas.",
+            "LIMITEDEXCEDED": "Superado el número de intentos"
+        }
+    },
+    "GLOBAL_POSITION": {
+        "SUMMARY": "Resumen de tu Salud Financiera",
+        "SUMMARY_SUB_TEXT": "¡Genial! El estado de tu salud financiera es:"
+    },
+    "FAQS": {
+        "NAME": "Preguntas Frecuentes",
+        "QUESTIONS": {
+            "1": "¿En qué consiste este servicio y qué utilidad me aporta?",
+            "2": "¿Quién presta este servicio?",
+            "3": "¿Es seguro?",
+            "4": "¿Cómo va a producirse el pago?",
+            "5": "Cuando termine el proceso, ¿qué ocurrirá?",
+            "6": "¿Tiene algún coste?",
+            "7": "¿Qué datos se acceden para la prestación del servicio?"
+        },
+        "ANSWERS": {
+            "1": "El servicio “Rapid Pay” es un “Servicio de Iniciación de Pagos” regulado por la Directiva Europea 2015/2366 sobre servicios de pago en el mercado interior (PSD2); por el Real Decreto-ley 19/2018, de 23 de noviembre, de servicios de pago y otras medidas urgentes en materia financiera; y por su legislación de desarrollo. Mediante este servicio se puede solicitar al banco gestor de su cuenta de pago (su banco) que realice el pago seleccionado, autorizándolo por un canal seguro.<br><br> La utilidad que aporta este servicio para usted es que podrá realizar un pago seguro mediante transferencia ordinaria desde su banco y hacia la cuenta del beneficiario, sin introducir manualmente su número de cuenta ni la cuenta destino, ni importe ni concepto. Rapid Pay le redirigirá a la banca electrónica del banco que haya seleccionado, se autenticará ante su banco como lo hace habitualmente y sólo tendrá que autorizar el pago. Tampoco es necesario el uso de tarjetas de crédito.",
+            "2": "Rapid Pay es proporcionado por Santander Consumer Finance S.A., entidad de crédito registrada en registro administrativo especial de entidades de crédito a cargo del Banco de España con el número 0224.",
+            "3": "Es seguro. Rapid Pay establece una comunicación segura con su banco, el cual a su vez solicita que realice los procesos de seguridad necesarios para la autorización del pago con todas las garantías de confidencialidad y seguridad. Rapid Pay no procesa sus credenciales de banca electrónica, ya que usted está comunicándose directamente con su banco.",
+            "4": "En cuanto acepte las condiciones del servicio, se le solicitará que seleccione el banco desde el que desea realizar el pago (donde tiene su cuenta). A continuación Rapid Pay establecerá una comunicación segura con esa entidad financiera, identificándose como prestador del servicio habilitado, compartiendo con ella las características del pago que usted quiere realizar, y solicitando a su entidad financiera que permita que usted autorice dicho pago. En ese momento su banco le solicitará que introduzca las credenciales que utiliza en su banca on-line habitualmente para autorizar operaciones de pago y, si su autenticación con su banco fuera exitosa, quedará autorizado el pago que usted ha solicitado en forma de transferencia desde la cuenta que usted hubiera seleccionado.",
+            "5": "Nada más finalizar el proceso, una vez autorizado el pago con su banco y si éste ha sido exitoso, podrá visualizar en pantalla cómo su banco confirma la operación y justo a continuación será una pantalla de Rapid Pay la que le confirmará los principales datos del pago efectuado.",
+            "6": "Rapid Pay es un servicio gratuito para el usuario. El pago se produce mediante una transferencia normal, no instantánea. Por tanto, es posible que su banco aplique alguna comisión para las transferencias, en cuyo caso serán aquellas que su banco le aplica normalmente para transferencias realizadas desde su banca on-line. No obstante, antes de realizar el pago usted podrá comprobar el importe que va a autorizar así como las posibles comisiones aplicadas por su banco, pudiendo no autorizar el mismo.",
+            "7": "Santander Consumer Finance S.A. solo accede a los datos que sean estrictamente necesarios para la prestación del Servicio de RapidPay (nombre, IBAN de tu cuenta y datos de la transacción).  En este sentido, te recordamos que Santander Consumer Finance S.A. no accede a tus credenciales de seguridad para la habilitación del Servicio de RapidPay, ya que el proceso de autorización del pago es gestionado directamente por el banco donde tienes tu cuenta y realizas el pago."
+            
+        }
+    },
+    "LOADING": {
+        "KPI": {
+            "1": "Controla tus deudas",
+            "2": "Paga tus facturas a tiempo",
+            "3": "Guarda una cantidad para imprevistos",
+            "4": "Ten un seguro a tu medida",
+            "5": "Elabora un presupuesto de gastos",
+            "6": "Gasta menos de lo que ingresas",
+            "7": "Considera que ahorrar es como pagarte a tí mismo"
+        },
+        "ACCOUNT_ADDED": "¡Cuenta agregada!",
+        "TEXT": "Estamos elaborando tu informe de ",
+        "STRONG_TEXT": "Salud Financiera",
+        "SUB_TEXT": "Este proceso puede tardar unos segundos"
+    },
+    "SIGN": {
+        "ERRORS": {
+            "EMAIL_VALID": "Introduce un email valido",
+            "EMAIL_REQUIRED": "El campo email es <strong>obligatorio</strong>",
+            "PASSWORD_REQUIRED": "El campo contraseña es <strong>obligatorio</strong>",
+            "PERSONAL_DATA_REQUIRED": "El campo datos personales es <strong>obligatorio</strong>",
+            "ALL_VALIDATIONS": "La contraseña debe contener 1 número, 1 minuscula, 1 mayuscula y 8 digitos",
+            "RECOVER_ALL_VALIDATIONS": "Su contraseña debe estar formada por 1 número, 1 minuscula, 1 mayuscula y 8 digitos",
+            "PASSWORD_2_REQUIRED": "Las contraseñas no coinciden",
+            "DNI": "El documento introducido no es correcto",
+            "DNI_REQUIRED": "El campo NIF/NIE/CIF es <strong>obligatorio</strong>"
+
+        }
+    },
+    "PROFILE": {
+        "ERRORS": {
+            "EMAIL_VALID": "Introduce un email valido",
+            "EMAIL_REQUIRED": "El campo email es <strong>obligatorio</strong>",
+            "PASSWORD_REQUIRED": "El campo contraseña es <strong>obligatorio</strong>",
+            "PERSONAL_DATA_REQUIRED": "El campo datos personales es <strong>obligatorio</strong>",
+            "OLD_PASS": "Su contraseña actual es incorrecta",
+            "EQUALS": "La contraseña, no pueden ser igual",
+            "ALL_VALIDATIONS": "La contraseña debe contener 1 número, 1 minuscula, 1 mayuscula y 8 digitos",
+            "RECOVER_ALL_VALIDATIONS": "Su contraseña debe estar formada por 1 número, 1 minuscula, 1 mayuscula y 8 digitos",
+            "PASSWORD_2_REQUIRED": "Las contraseñas no coinciden",
+            "DNI": "El documento introducido no es correcto",
+            "DNI_REQUIRED": "El campo NIF/NIE/CIF es <strong>obligatorio</strong>",
+            "PHONE": "EL número de teléfono no es correcto"
+        }
+    }
+}

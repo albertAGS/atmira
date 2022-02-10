@@ -1,0 +1,35 @@
+<mat-dialog-content>
+
+  <ng-container *ngIf="data.window === 'IBAN'">
+  Introduce el IBAN:
+  <form [formGroup]="ibanForm" autocomplete="off" method="post">
+    <mat-form-field>
+      <mat-label>IBAN</mat-label>
+      <input matInput maxlength=30 formControlName="iban" placeholder="IBAN">
+      <mat-error *ngIf="getErrors()">El IBAN introducido no es valido</mat-error>
+    </mat-form-field>
+  </form>
+  </ng-container>
+
+  <ng-container *ngIf="data.window === 'SCA'">
+    Introduce tu contraseña y el código que se ha enviado en su teléfono
+    <form [formGroup]="validationForm" autocomplete="off" method="post">
+      <mat-form-field>
+        <mat-label>Contraseña</mat-label>
+        <input matInput [type]="password" formControlName="passPopUp" placeholder="Contraseña">
+        <mat-icon (click)="changeIcon()" matSuffix>{{visibility}}</mat-icon>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Código SMS</mat-label>
+        <input matInput matInput autocomplete="off" maxlength="6"
+               formControlName="code" placeholder="Código SMS">
+
+      </mat-form-field>
+    </form>
+  </ng-container>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close] = false>  Cancelar
+  </button>
+  <button mat-button (click)="sendForm()" [disabled]='getErrors()'>Validar</button>
+</mat-dialog-actions>

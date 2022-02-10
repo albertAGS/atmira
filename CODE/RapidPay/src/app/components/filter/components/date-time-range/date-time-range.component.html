@@ -1,0 +1,25 @@
+<div *ngIf="filter.label">{{ filter.label }}</div>
+<mat-form-field appearance="fill">
+  <mat-label>Con el icono, seleccione una fecha</mat-label>
+  <!-- <mat-label>Fecha</mat-label> -->
+  <mat-date-range-input disabled [formGroup]="form" [rangePicker]="picker">
+    <input matStartDate (dateChange)="searchError()" [formControlName]="properties.start.name"
+           [placeholder]="properties.start.label">
+    <input matEndDate (dateChange)="searchError()" [formControlName]="properties.end.name"
+           [placeholder]="properties.end.label">
+  </mat-date-range-input>
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-date-range-picker #picker disabled="false">
+    <mat-date-range-picker-actions>
+      <button mat-button matDateRangePickerCancel>Cancel</button>
+      <button mat-raised-button color="primary"
+              matDateRangePickerApply>Apply</button>
+    </mat-date-range-picker-actions>
+  </mat-date-range-picker>
+  <mat-error
+             *ngIf="form.controls[properties.start.name]?.hasError('matStartDateInvalid') || form.controls[properties.start.name]?.hasError('matDatepickerParse')">
+    Fecha de inicio inválida</mat-error>
+  <mat-error
+             *ngIf="form.controls[properties.end.name]?.hasError('matEndDateInvalid') || form.controls[properties.end.name]?.hasError('matDatepickerParse')">
+    Fecha fin inválida</mat-error>
+</mat-form-field>

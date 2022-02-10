@@ -1,0 +1,61 @@
+<div @fade class="app-login" [ngStyle]="{'grid-template-rows': !headerFooter ? 'auto' : '150px auto' }">
+  <app-header *ngIf="headerFooter" class="header-mobile"></app-header>
+  <header *ngIf="headerFooter" class="header">
+    <div class="container-logo">
+      <div class="logo">
+        <img src="./assets/logos/logo_rapid_pay_2.png" alt="">
+      </div>
+    </div>
+    <div class="faq-container">
+      <a routerLink="/faq" title="Preguntas frecuentes">
+        <span>
+          Preguntas frecuentes
+        </span>
+        <img src="./assets/icons/faq.svg" alt=""></a>
+    </div>
+  </header>
+  <div class="body">
+    <div class="tabs-number" *ngIf="refreshEntityCode">
+      <div class="tabs-container">
+      </div>
+    </div>
+    <div class="change-container">
+      <div class="container-tittle">
+        <p class="select-tittle"> {{ 'LOGIN.SELECT_ENTITY' | translate }}</p>
+      </div>
+      <div class="container-subtitle">
+        <p [innerHTML]="'LOGIN.SELECT_ENTITY_SUBTITLE' | translate"></p>
+      </div>
+      <div class="container-entities">
+        <div class="container-entity" *ngFor="let entity of mainEntities; let i = index"
+          (click)="goToUrl(entity.Id_Entitie)">
+          <img (mousedown)="disableDragging($event)" [src]="'./assets/login/' + entity.Id_Entitie + '.svg'" alt="">
+        </div>
+      </div>
+      <div class="container-search-entities">
+        <p>{{ 'LOGIN.NOT_FOUND_ENTITY' | translate }}</p>
+        <app-search-entities [entities]="entities" (entityEmitter)="getEntity($event)">
+        </app-search-entities>
+      </div>
+      <div class="icons-container">
+        <div>
+          <a target="_blank" href="https://www.entrust.net/customer/profile?domain=santanderconsumer.es&lang=en">
+            <img style="width: 70px;" src="./assets/security/2.svg" alt="">
+          </a>
+        </div>
+        <div>
+          <a target="_blank" href="https://www.entrust.com/resources/certificate-solutions/learn/faq">
+            <img src="./assets/security/3.svg" alt="">
+          </a>
+          <a target="_blank"
+            href="https://www.bde.es/bde/es/areas/supervision/funcion/Entidades/Entidades_supervisadas.html">
+            <img src="./assets/security/bde.png" alt="">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer *ngIf="headerFooter" class="footer" [colorItems]="'#ffffff'" [classSpecial]="true"></app-footer>
+</div>
+
+<app-loading-process *ngIf="showLoading"></app-loading-process>

@@ -1,0 +1,6 @@
+<mat-form-field [formGroup]="form" appearance="fill"
+                floatLabel="always">
+  <mat-label *ngIf="filter.label">{{ filter.label }} </mat-label>
+  <input [formControlName]="filter.name" matInput
+         [placeholder]='filter.label'>
+</mat-form-field>

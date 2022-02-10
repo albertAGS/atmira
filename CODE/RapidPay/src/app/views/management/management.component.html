@@ -1,0 +1,18 @@
+<div class="container">
+  <app-header-management>
+    <div>
+      <button mat-stroked-button [matMenuTriggerFor]="menu" *ngIf="auth.user?.type === 'A1'" > {{auth.user?.name}} </button>
+      <button mat-stroked-button *ngIf="auth.user?.type !== 'A1'" > {{auth.user?.name}} </button>
+      <button matTooltip='Cerrar sesión' class="logout" mat-button (click)="logout()">
+        <mat-icon class="material-icons-outlined">
+          logout
+        </mat-icon>
+      </button>
+    </div>
+  </app-header-management>
+  <router-outlet></router-outlet>
+</div>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="newUser()">Nuevo usuario</button>
+  <button mat-menu-item (click)="deleteUser()">Eliminar usuario</button>
+</mat-menu>

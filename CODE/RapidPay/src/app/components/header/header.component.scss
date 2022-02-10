@@ -1,0 +1,20 @@
+:host {
+  background: #ffffff;
+}
+
+header {
+  height: 78px;
+  justify-content: flex-start;
+  display: flex;
+  align-items: center;
+  img {
+    padding: 0 0 0 10%;
+    max-height: 78px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  header > img.back-view-icon {
+    
+  }
+}

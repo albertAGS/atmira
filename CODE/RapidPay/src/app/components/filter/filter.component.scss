@@ -1,0 +1,15 @@
+.filter {
+  &__button {
+    display: flex;
+    justify-content: center;
+    button{
+      margin-right: 10px;
+      margin-bottom: 10px;
+      p {
+        color: blue;
+        padding: 0;
+        margin: 0;
+      }
+    }
+  }
+}

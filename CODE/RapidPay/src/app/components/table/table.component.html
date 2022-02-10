@@ -1,0 +1,104 @@
+<div class="content-table" style="height: 200px;">
+  <div class="content__paginator"
+       [ngClass]="{'back__activated': tableService.length === 0}">
+    <mat-paginator *ngIf="tableService.length > 0"
+                   (page)="pageEvent; pageEve($event)"
+                   [hidePageSize]="true" pageSize=50 [length]="tableService.length"
+                   showFirstLastButtons>
+    </mat-paginator>
+    <div class="content-buttons">
+      <ng-content select=".back__button"></ng-content>
+      <ng-content *ngIf="tableService.length > 0" select=".download__button">
+      </ng-content>
+      <ng-content select=".filters__button">
+      </ng-content>
+    </div>
+  </div>
+
+  <!-- <button (click)="addData()">asd</button> -->
+  <!-- <div class="table" [ngStyle]="{'overflow': length > 6 ? 'auto' : 'hidden'}"> -->
+  <div class="table" [style.height.px]="height" *ngIf="tableService.length > 0 && !loading && height !== 0">
+    <table mat-table class="table-inner" [dataSource]="dataSource"
+           multiTemplateDataRows>
+      <ng-container [matColumnDef]='table.key'
+                    *ngFor="let table of infoTable.tableInfo | keyvalue">
+        <th mat-header-cell *matHeaderCellDef> {{table.value}} </th>
+        <ng-container *ngIf="table.key=== 'Estado'">
+          <td mat-cell *matCellDef="let element">
+            <span
+                  [ngClass]="element[table.key].replaceAll(' ', '-')">{{element[table.key]}}</span>
+          </td>
+        </ng-container>
+        <ng-container>
+          <td mat-cell *matCellDef="let element">
+            {{element[table.key]}}
+            <ng-container
+                          *ngIf="table.key.toLowerCase().startsWith('saldo') || table.key.toLowerCase().startsWith('importe')">
+              €</ng-container>
+          </td>
+        </ng-container>
+      </ng-container>
+
+      <ng-container matColumnDef="expandedDetail">
+        <td class="table-inner__td-expanded" mat-cell
+            *matCellDef="let element"
+            [attr.colspan]="infoTable.header.length">
+          <div class="table-inner__content-expanded"
+               [@detailExpand]="infoTable.expanded.length > 0 && element == expandedElement ? 'expanded' : 'collapsed'">
+            <ul class="table-inner__content-item">
+              <li *ngFor="let toShow of infoTable.expanded">
+                <b>{{infoTable.tableInfo[toShow]}} : </b>
+                {{element[toShow]}} <ng-container
+                              *ngIf="infoTable.tableInfo[toShow].toLowerCase().startsWith('saldo') || infoTable.tableInfo[toShow].toLowerCase().startsWith('importe')">
+                  €</ng-container>
+              </li>
+            </ul>
+            <div class="content-button">
+              <button mat-button
+                      *ngIf="infoTable.popUp && element['Estado'] === 'Saldo en custodia'"
+                      (click)="openPopUp(element, 'release')">Liberar
+                fondos</button>
+              <button mat-button
+                      *ngIf="infoTable.popUp && (element['Estado'] === 'Saldo repartido' || element['Estado'] === 'Saldo en custodia')"
+                      (click)="openPopUp(element, 'reimburse')">Reembolsar</button>
+            </div>
+            <div class="buttons-inside">
+              <ng-container *ngFor="let button of infoTable.buttons">
+                <a matRipple class="button-search"
+                   [matTooltip]="'Se filtran '+ button.name.toLowerCase()"
+                   (click)="searcRefTable(button, element)">
+                  <i [ngClass]="button.url" class="button__icon"
+                     *ngIf="button.url">
+                  </i>
+                  {{button.name}}
+                </a>
+              </ng-container>
+            </div>
+          </div>
+        </td>
+      </ng-container>
+      <tr mat-header-row
+          *matHeaderRowDef="infoTable.header;  sticky: true"></tr>
+      <tr mat-row
+          *matRowDef="let element; let even = even; let index = dataIndex; columns: infoTable.header;"
+          class="table-inner__basic-info"
+          (click)="expandedElement = infoTable.expanded.length > 0 && expandedElement === element ? null : element"
+          [ngClass]="{
+   'row-cursor': infoTable.expanded.length > 0,
+   table__even: index % 2 == 0,
+   'table__is-expanded': infoTable.expanded.length > 0 && expandedElement === element
+ }">
+      </tr>
+      <tr mat-row
+          *matRowDef="let row; let even = even;  columns: ['expandedDetail']"
+          class="table-inner__row-expanded"></tr>
+    </table>
+  </div>
+
+
+
+  <app-loading-process *ngIf="loading ||  height === 0">
+  </app-loading-process>
+  <div class="content-table-empty" *ngIf="tableService.length === 0 && !loading">
+    No hay datos</div>
+</div>

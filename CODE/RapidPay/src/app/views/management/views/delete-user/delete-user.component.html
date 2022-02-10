@@ -1,0 +1,19 @@
+<h2> Formulario para la eliminación de un nuevo usuario</h2>
+<form *ngIf="deleteUser" [formGroup]="deleteUser" autocomplete="off"
+      method="POST">
+  <div class="form">
+    <div class="input-error">
+      <mat-form-field class="example-full-width"
+                      appearance="fill">
+        <mat-label>Documento</mat-label>
+        <input matInput formControlName="Documento"
+               placeholder="Documento">
+        <mat-error>Documento requerido</mat-error>
+      </mat-form-field>
+    </div>
+
+  </div>
+  <button class="sign-in" [disabled]="!deleteUser.valid"
+          [ngStyle]="{ 'cursor': deleteUser.valid ? 'pointer' : 'auto'}"
+          (click)="userToDelete()">Eliminar usuario</button>
+</form>

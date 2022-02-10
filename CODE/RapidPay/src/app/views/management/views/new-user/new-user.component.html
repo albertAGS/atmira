@@ -1,0 +1,119 @@
+<h2> Formulario para creación de un nuevo usuario</h2>
+<form *ngIf="newUser" [formGroup]="newUser" autocomplete="off"
+      method="POST">
+  <div class="form">
+    <div class="form-no-password">
+      <div class="form-name">
+        <div class="input-error">
+          <mat-form-field class="example-full-width"
+                          appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="Nombre"
+                   placeholder="Nombre">
+            <mat-error>Nombre requerido</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="input-error">
+          <mat-form-field class="example-full-width"
+                          appearance="fill">
+            <mat-label>Primer apellido</mat-label>
+            <input matInput formControlName="Apellido_1"
+                   placeholder="Primer apellido">
+            <mat-error>Primer apellido requerido</mat-error>
+
+          </mat-form-field>
+        </div>
+        <div class="input-error">
+          <mat-form-field class="example-full-width"
+                          appearance="fill">
+            <mat-label>Segundo apellido</mat-label>
+            <input matInput formControlName="Apellido_2"
+                   placeholder="Segundo apellido">
+            <mat-error>Segundo apellido requerido</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="input-error">
+          <mat-form-field class="example-full-width"
+                          appearance="fill">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="Email"
+                   placeholder="Email">
+            <mat-error>Ejemplo: asd@example.com</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div>
+        <div class="input-error">
+          <mat-form-field class="example-full-width"
+                          appearance="fill">
+            <mat-label>Usuario</mat-label>
+            <input matInput formControlName="Usuario"
+                   placeholder="Usuario">
+            <mat-error>Usuario requerido</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="input-error">
+          <mat-form-field class="example-full-width"
+                          appearance="fill">
+            <mat-label>Documento</mat-label>
+            <input matInput formControlName="Documento"
+                   placeholder="Documento">
+            <mat-error>Documento requerido</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="input-error">
+          <mat-form-field appearance="fill">
+            <mat-label>Selecciona un rol</mat-label>
+            <mat-select formControlName="Rol">
+              <mat-option *ngFor="let rol of listRoles"
+                          [value]="rol.Role_id">
+                {{rol.Role_name}}
+              </mat-option>
+            </mat-select>
+            <mat-error>Rol requerido</mat-error>
+          </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Selecciona una aplicación</mat-label>
+          <mat-select formControlName="App">
+            <mat-option *ngFor="let app of listApps"
+                        [value]="app.id_app">
+              {{app.app_name}}
+            </mat-option>
+          </mat-select>
+          <mat-error>Aplicación requerido</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-password">
+      <div class="input-error"
+           [ngClass]="{'error-input': getError() }">
+        <mat-form-field class="example-full-width"
+                        [formGroup]="newUser.get('Contrasena')"
+                        appearance="fill">
+          <mat-label> Contraseña </mat-label>
+          <input matInput formControlName="Contrasena1"
+                 placeholder="Contraseña">
+        </mat-form-field>
+        <p *ngIf="getError()">Las contraseñas no
+          coinciden</p>
+      </div>
+      <div class="input-error"
+           [ngClass]="{'error-input': getError() }">
+        <mat-form-field [formGroup]="newUser.get('Contrasena')"
+                        appearance="fill">
+          <mat-label> Repite la contraseña </mat-label>
+          <input formControlName="Contrasena2" matInput
+                 placeholder="Repite la contraseña">
+        </mat-form-field>
+        <p *ngIf="getError()">Las contraseñas no
+          coinciden</p>
+      </div>
+    </div>
+  </div>
+  <button class="sign-in" [disabled]="!newUser.valid"
+          [ngStyle]="{ 'cursor': newUser.valid ? 'pointer' : 'auto'}"
+          (click)="userToCreate()">Crear User</button>
+</form>

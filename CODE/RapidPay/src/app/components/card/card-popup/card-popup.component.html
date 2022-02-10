@@ -1,0 +1,14 @@
+<mat-dialog-content>
+  <h3>Listado transacciones</h3>
+  <ng-container
+                *ngFor="let card of cardService.statsTransactions | keyvalue">
+    <div [ngClass]="card.key">
+      {{card.key.replace('-',' ')}}:{{card.value}}
+    </div>
+
+  </ng-container>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Salir</button>
+</mat-dialog-actions>

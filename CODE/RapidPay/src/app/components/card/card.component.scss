@@ -1,0 +1,23 @@
+:host {
+  mat-card {
+    min-width: 120px;
+    padding: 0;
+    max-width: 100%;
+    margin: 1rem 5px;
+    background: #fff;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    mat-card-header {
+      border-bottom: 1px solid #00000042;
+      mat-card-title {
+        margin: 10px 0;
+        font-size: 12px;
+        font-weight: bold;
+      }
+    }
+    mat-card-content {
+      margin: 5px 15px;
+    }
+  }
+}

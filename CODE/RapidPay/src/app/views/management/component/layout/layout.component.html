@@ -1,0 +1,40 @@
+<div class="layout" [ngClass]="{'activated': filtersOpened}">
+  <div class="layout__cards" *ngIf="cards">
+    <app-card [ngClass]="{'first': first}"
+              *ngFor="let card of cards; let first = first">
+      <p class="header">{{card.title}}</p>
+      <span [ngClass]="card.icon">
+        <div class="card__number-icon">
+          <p class="number">{{card.number}}</p>
+          <i class="card__icon" *ngIf="card.icon"></i>
+        </div>
+        <button class="button" mat-raised-button
+                (click)="openTransactions()" *ngIf="card.button">
+                <mat-icon>info</mat-icon> </button>
+        <p class="footer">{{card.title}}</p>
+      </span>
+    </app-card>
+  </div>
+  <div id=tableSize (window:resize)="windowResize()"
+       class="layout__table">
+    <app-tabs [optionsTabs]=listTabs [smallWindow]=smallWindow>
+    </app-tabs>
+    <app-table *ngIf="infoTable" [infoTable]='infoTable' [height]='height'>
+      <button class="back__button"
+              *ngIf="tableService.filtersFromOperations && tableService.backOperations"
+              (click)="backOperations()" mat-button>
+        Volver
+      </button>
+      <button class="download__button" (click)="downloadCSV()" mat-button>
+        CSV
+      </button>
+      <button class="filters__button" *ngIf="filters.length > 0"
+              (click)="filterClick()" mat-button>
+        Filter
+      </button>
+    </app-table>
+  </div>
+</div>
+<app-filter [ngClass]="{'filter__activated': filtersOpened}"
+            class="layout__filters" [filters]=filters>
+</app-filter>

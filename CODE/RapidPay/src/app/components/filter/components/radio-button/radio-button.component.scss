@@ -1,0 +1,38 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  margin: 0 20px;
+  div {
+    margin: 10px 0;
+    font-weight: bold;
+  }
+  .column {
+    display: flex;
+    flex-direction: column;
+    .mat-radio-button{
+      margin: 5px;
+    }
+  }
+  :not(.column) {
+    .mat-radio-button ~ .mat-radio-button {
+      margin-left: 16px;
+    }
+  }
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+    li{
+      margin: 0;
+      display: flex;
+      align-items: center;
+    }
+    mat-icon {
+      margin-left: auto;
+      color: #808080;
+      cursor: context-menu;
+    }
+  }
+
+}

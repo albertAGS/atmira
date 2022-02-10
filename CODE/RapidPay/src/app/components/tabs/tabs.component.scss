@@ -1,0 +1,232 @@
+:host {
+  width: 100%;
+}
+.tabs {
+  margin-left: 15px;
+  height: 50px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  &__inner {
+    min-width: 160px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #000;
+    opacity: 0.5;
+    &.accounts {
+      i {
+        background-image: url("../../../assets/icons/tabs/accounts.png");
+      }
+    }
+    &.alerts {
+      i {
+        background-image: url("../../../assets/icons/tabs/alerts.png");
+      }
+    }
+    &.events {
+      i {
+        background-image: url("../../../assets/icons/tabs/events.png");
+      }
+    }
+    &.operations {
+      i {
+        background-image: url("../../../assets/icons/tabs/operations.png");
+      }
+    }
+    &.requests {
+      i {
+        background-image: url("../../../assets/icons/tabs/requests.png");
+      }
+    }
+    &.transfers {
+      i {
+        background-image: url("../../../assets/icons/tabs/transfers.png");
+      }
+    }
+    i {
+      width: 20px;
+      height: 20px;
+      &.tabs__icon {
+        background-size: 20px 20px;
+        background-repeat: no-repeat;
+      }
+    }
+    &:hover {
+      transition: opacity 200ms ease-out;
+      opacity: 1;
+      &.accounts {
+        .tabs__icon {
+          background-image: url("../../../assets/icons/tabs/accounts-active.png");
+        }
+      }
+      &.alerts {
+        .tabs__icon {
+          background-image: url("../../../assets/icons/tabs/alerts-active.png");
+        }
+      }
+      &.events {
+        .tabs__icon {
+          background-image: url("../../../assets/icons/tabs/events-active.png");
+        }
+      }
+      &.operations {
+        .tabs__icon {
+          background-image: url("../../../assets/icons/tabs/operations-active.png");
+        }
+      }
+      &.requests {
+        .tabs__icon {
+          background-image: url("../../../assets/icons/tabs/requests-active.png");
+        }
+      }
+      &.transfers {
+        .tabs__icon {
+          background-image: url("../../../assets/icons/tabs/transfers-active.png");
+        }
+      }
+    }
+  }
+  &__menu {
+    height: 40px;
+    justify-content: flex-start;
+  }
+  .select {
+    margin-left: auto;
+  }
+
+  &__active {
+    &.accounts {
+      .tabs__icon {
+        background-image: url("../../../assets/icons/tabs/accounts-active.png");
+      }
+      ::after {
+        content: "";
+        width: 100%;
+        height: 5px;
+        background: #aa4ac9;
+        position: absolute;
+        bottom: 0px;
+        left: 0;
+      }
+    }
+    &.alerts {
+      .tabs__icon {
+        background-image: url("../../../assets/icons/tabs/alerts-active.png");
+      }
+      ::after {
+        content: "";
+        width: 100%;
+        height: 5px;
+        background: #f45f5f;
+        position: absolute;
+        bottom: 0px;
+        left: 0;
+      }
+    }
+    &.events {
+      .tabs__icon {
+        background-image: url("../../../assets/icons/tabs/events-active.png");
+      }
+
+      ::after {
+        content: "";
+        width: 100%;
+        height: 5px;
+        background: #9ae0c9;
+        position: absolute;
+        bottom: 0px;
+        left: 0;
+      }
+    }
+    &.operations {
+      .tabs__icon {
+        background-image: url("../../../assets/icons/tabs/operations-active.png");
+      }
+
+      ::after {
+        content: "";
+        width: 100%;
+        height: 5px;
+        background: #ff6838;
+        position: absolute;
+        bottom: 0px;
+        left: 0;
+      }
+    }
+    &.requests {
+      .tabs__icon {
+        background-image: url("../../../assets/icons/tabs/requests-active.png");
+      }
+
+      ::after {
+        content: "";
+        width: 100%;
+        height: 5px;
+        background: #41c6ce;
+        position: absolute;
+        bottom: 0px;
+        left: 0;
+      }
+    }
+    &.transfers {
+      .tabs__icon {
+        background-image: url("../../../assets/icons/tabs/transfers-active.png");
+      }
+
+      ::after {
+        content: "";
+        width: 100%;
+        height: 5px;
+        background: #ffd571;
+        position: absolute;
+        bottom: 0px;
+        left: 0;
+      }
+    }
+
+    opacity: 1;
+  }
+
+  &__icon {
+    padding: 0 5px 0 10px;
+  }
+}
+
+.tab-selected {
+  opacity: 0.3;
+  height: 1px;
+  position: relative;
+  background-color: #0000004f;
+
+}
+::ng-deep.mat-menu-content:not(:empty) {
+  padding: 0 0 0 5px !important;
+}
+// &.graph {
+//   animation: advancedLeft 100ms ease-out forwards;
+// }
+// &.list {
+//   animation: advancedRight 100ms ease-out forwards;
+// }
+
+// @keyframes advancedLeft {
+//   0% {
+//     left: 0;
+//   }
+//   100% {
+//     left: 150px;
+//   }
+// }
+// @keyframes advancedRight {
+//   0% {
+//     left: 150px;
+//   }
+//   100% {
+//     left: 0;
+//   }
+// }
